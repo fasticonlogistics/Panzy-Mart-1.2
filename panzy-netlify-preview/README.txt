@@ -1,25 +1,25 @@
 PANZY STATIC PREVIEW - NETLIFY DEPLOYMENT
 ========================================
 
-This folder is the free, static storefront preview. Keep panzy-theme.zip next
-to this folder for the separate WordPress + WooCommerce installation.
+This folder is the free, static storefront preview. It runs independently of
+the separate WordPress + WooCommerce installation.
 
 DEPLOY THIS FOLDER FROM GITHUB
 ------------------------------
-The GitHub repository already has this project inside the "Panzy 3 merge web"
-folder. Upload this entire "panzy-netlify-preview" folder there. Do not upload
-only the HTML files: the "panzy-preview-assets" subfolder contains the logo
-and all product, category, and hero images and is required for images to show.
+Keep the repository-root netlify.toml and the entire "panzy-netlify-preview"
+folder in the repository. Do not upload only the HTML files: the
+"panzy-preview-assets" subfolder contains the logo and all product, category,
+and hero images and is required for images to show.
 
-In Netlify, open the panzy-mart-2 site's:
+In Netlify, open the panzy-mart-12 site's:
 Project configuration > Build & deploy > Continuous deployment > Build settings
 
-Set Base directory to:
-Panzy 3 merge web/panzy-netlify-preview
+The repository-root netlify.toml sets Base directory to the repository root
+and Publish directory to panzy-netlify-preview. No build command is needed.
 
-Leave the Build command empty. The included netlify.toml sets the publish
-directory to this folder and no build/install is required. Save and trigger
-"Clear cache and deploy site" (or "Deploy site") from the Deploys page.
+Leave the Build command empty. The root configuration is used automatically
+for Git-connected deploys. Trigger "Deploy site" from the Deploys page after
+the changes reach the main branch.
 
 The deployed site should contain index.html at its root. If Netlify shows a
 404, check the exact base directory, the branch selected for deploy, and that
@@ -33,7 +33,9 @@ ALTERNATIVE: UPLOAD THIS FOLDER'S CONTENTS TO A NEW REPOSITORY ROOT
 -----------------------------------------------------------------
 If you create a separate GitHub repository just for the preview, upload the
 contents of this folder (not an additional enclosing folder) to the repository
-root. Connect that repository in Netlify and leave Base directory empty.
+root, including this folder's netlify.toml, which publishes ".". Do not copy
+the parent repository's netlify.toml into that standalone repository. Connect
+that repository in Netlify and leave Base directory empty.
 
 PAGES
 -----
